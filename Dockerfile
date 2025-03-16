@@ -17,20 +17,27 @@ COPY src/ ./src/
 # Run the build
 RUN zig build
 
+
+
 # Этап 2: Финальный образ
 FROM alpine:latest
 
 # Install runtime dependencies for SSL/crypto
-RUN apk add --no-cache libssl3 libcrypto3
+RUN apk add --no-cache libssl3 libcrypto3 liburing
+
 
 # Create app directory
 WORKDIR /app
 
 # Copy only the built binary from the builder stage
-COPY --from=builder /app/zig-out/bin/ingress /app/
+# Укажем точный путь к бинарнику, где он фактически находится
+COPY --from=builder /app/zig-out/bin/ingress /app/ingress
+
+# Убедимся, что файл существует и исполняемый
+RUN ls -la /app/ingress && chmod +x /app/ingress
 
 # Set the binary as executable
 RUN chmod +x /app/ingress
 
 # Command to run when container starts
-ENTRYPOINT ["/app/ingress"]
+ENTRYPOINT ["/app/ingress", "-p", "8080"]
