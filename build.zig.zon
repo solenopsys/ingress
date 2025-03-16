@@ -1,0 +1,34 @@
+.{
+    .name = .ingress,
+
+    .version = "0.0.0",
+
+    .fingerprint = 0xd89a78501314a45b,
+
+    .minimum_zig_version = "0.14.0",
+
+    .dependencies = .{
+        .udp_uring = .{
+            .url = "https://github.com/solenopsys/zig-udpuring/archive/84f4e05fc64ce319a5111749927411f1e08a9375.tar.gz",
+            .hash = "udp_uring-0.0.1-ZfYJtlx2AABkoCgCSHhPORVCdeFaBjCxy8YlyxmQh2Dk",
+        },
+        .httpuring = .{
+            .url = "https://github.com/solenopsys/zig-httpuring/archive/89665d344713db2bf2adc1b0276868f218fb6e74.tar.gz",
+            .hash = "zig_httpuring-0.0.2-kVMG2DWHAAAMyoaH-yQw1AEC5BlAIutKbuNx9YdemLFe",
+        },
+        .redis = .{
+            .url = "https://github.com/solenopsys/zig-redis-uring/archive/5c1cac8c69eba01241d882c05d54290bc1e19a75.tar.gz",
+            .hash = "zig_redis_uring-0.0.0-nENnJo09AAAcE5GTtFBfl3gp5KfElWI12Z63PpzN9_Ew",
+        },
+        .picozig = .{
+            .url = "https://github.com/solenopsys/zig-pico/archive/0d9695011924c4dabc46d41e0051e3a7cfc1a7f9.tar.gz",
+            .hash = "zig_pico-0.0.0-_nVnubyDAACczYJ3UoH5YJe5GM0ryyWhUcHumMjpVYZ-",
+        },
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
